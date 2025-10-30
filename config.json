@@ -1,0 +1,35 @@
+{
+  "info_level": "INFO_2",
+  "mass": "JPsi",
+  "input": {
+    "root_files_DATA": {
+        "DATA_Jpsi_goldID_barrel_2": "OVERLEAF/JPSI_GOLD_BLP/goldID_l_2023pre/DATA_Bp_23_D/get_1d_pt_eta_phi_tnp_histograms_1/D_JPsi_2023post_histos_pt_barrel_2.root"
+    },
+    "root_files_MC": {         
+        "MC_Jpsi_goldID_barrel_2": "OVERLEAF/JPSI_GOLD_BLP/goldID_l_2023pre/MC_JPsi_23_postBPix/get_1d_pt_eta_phi_tnp_histograms_1/MC_JPsi_2023post_histos_pt_barrel_2.root"
+    }                                      
+  },                       
+  "fit": {
+    "bin": ["bin0", "bin1"],
+    "bin_ranges": [[2, 5], [5,7]],
+    "fit_type": "dcb_cms",
+    "use_cdf": false,
+    "sigmoid_eff": false,
+    "interactive": false,
+    "x_min": 2.8,
+    "x_max": 3.4,
+    "abseta": 1,
+    "numerator": "gold",
+    "denominator": "baselineplus",
+    "separate_signal_shape": false
+  },
+  "output": {
+    "plot_dir": "OVERLEAF/JPSI_GOLD_BLP_PLOTS/GOLDID/barrel_2",
+    "results_file": ""             
+  },
+  "scale_factors": {
+      "data_mc_pair": {}
+  }
+}
+
+
