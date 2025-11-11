@@ -88,6 +88,10 @@ def fit_function(
     values_fail = values_fail[mask_fail]
     errors_fail = errors_fail[mask_fail]
 
+    # Get total entries in the fit range for pass/fail histograms
+    total_pass_entries = np.sum(values_pass)
+    total_fail_entries = np.sum(values_fail)
+
     if args_mass == "Z" or args_mass == "Z_muon":
         # Calculate data-based initial guesses
         N_p0 = np.sum(values_pass) + np.sum(values_fail)
@@ -104,8 +108,8 @@ def fit_function(
         bounds.update(
             {
                 "N": (B_p_p0 + B_f_p0, N_p0*10, np.inf),
-                "B_p": (0, B_p_p0 / 4, np.inf),
-                "B_f": (0, B_f_p0, np.inf),
+                "B_p": (0, B_p_p0 / 4, total_pass_entries),
+                "B_f": (0, B_f_p0, total_fail_entries),
             }
         )
 
@@ -137,8 +141,8 @@ def fit_function(
         bounds.update(
             {
                 "N": (0, N_p0*10, np.inf),
-                "B_p": (0, B_p_p0, np.inf),
-                "B_f": (0, B_f_p0, np.inf),
+                "B_p": (0, B_p_p0, total_pass_entries),
+                "B_f": (0, B_f_p0, total_fail_entries),
             }
         )
 
